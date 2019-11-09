@@ -1,15 +1,4 @@
-body {
-  background-color: #ffff;
-  position: relative;
-}
-
-#chartdiv {
+#mapdiv {
   width: 100%;
-  height: 650px;
-}
-#chartdiv .amcharts-map-area {
-}
-#chartdiv:hover .amcharts-map-area:hover {
-  opacity: 1;
-  filter: none;
+  height: 700px;
 }
