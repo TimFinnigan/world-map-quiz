@@ -22,6 +22,16 @@ $(document).ready(function() {
       outlineColor: "#666666",
       rollOverColor: "#9EC2F7",
       rollOverOutlineColor: "#000000"
-    }
+    },
+    listeners: [
+      {
+        event: "clickMapObject",
+        method: function(event) {
+          console.log(event.mapObject.id);
+        }
+      }
+    ]
   });
+  let mapObject = map.getObjectById("US");
+  map.clickMapObject(mapObject);
 });
