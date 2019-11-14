@@ -32,6 +32,12 @@ $(document).ready(function() {
       }
     ]
   });
-  let mapObject = map.getObjectById("US");
-  map.clickMapObject(mapObject);
+
+  // Todo - update host for JSON file
+  $.getJSON("https://api.myjson.com/bins/1du42e.json", function(result) {
+    let codes = Object.keys(result);
+    let country = codes[Math.floor(Math.random() * codes.length)];
+    let mapObject = map.getObjectById(country);
+    map.clickMapObject(mapObject);
+  });
 });
