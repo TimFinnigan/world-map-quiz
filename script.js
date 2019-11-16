@@ -53,6 +53,7 @@ $(document).ready(function() {
   $.getJSON("https://api.myjson.com/bins/1du42e.json", function(result) {
     let codes = Object.keys(result);
     let countries = Object.values(result);
+
     populateDropdown(countries);
 
     $("#count").text(codes.length);
@@ -62,8 +63,11 @@ $(document).ready(function() {
     map.clickMapObject(mapObject);
 
     let country = result[randomCountry];
-
     $("#hint").text("Country code is: " + randomCountry);
+
+    $("#hintButton").click(function() {
+      $("#hint").show();
+    });
 
     $("#selectCountry").change(function() {
       let selected = $("#selectCountry option:selected").val();
@@ -74,6 +78,8 @@ $(document).ready(function() {
       }
       $("#correctAnswers").text(correctAnswers.length);
       $("#wrongAnswers").text(wrongAnswers.length);
+
+      $("#count").text(codes.length);
     });
   });
 });
