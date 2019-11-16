@@ -63,11 +63,15 @@ $(document).ready(function() {
 
     let country = result[randomCountry];
 
-    // $("#randomCountry").text(result[randomCountry]);
+    $("#hint").text("Country code is: " + randomCountry);
 
     $("#selectCountry").change(function() {
       let selected = $("#selectCountry option:selected").val();
-      if (selected === country) alert("you got it!");
+      if (selected === country) {
+        correctAnswers.push(country);
+      } else {
+        wrongAnswers.push(country);
+      }
     });
   });
 });
