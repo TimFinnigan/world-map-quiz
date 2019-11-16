@@ -4,7 +4,7 @@ body {
 
 #info {
   height: 120px;
-  width: 400px;
+  width: 350px;
   border-radius: 1%;
   border: 3px solid darkgrey;
   background: lightgrey;
@@ -17,13 +17,14 @@ body {
   font-family: Verdana, Geneva, sans-serif;
 }
 
-#count {
-  margin-top: 15px;
+#selectCountry {
+  width: 200px;
 }
 
-#hintButton {
+#hintButton, #nextButton {
   font-size: 16px;
   margin-top: 5px;
+  display: inline-block;
 }
 
 #hint {
@@ -38,8 +39,14 @@ body {
 #wrongWrapper {
   color: darkred;
   display: inline-block;
-  margin-left: 50px;
+  margin-left: 25px;
 }
+
+#countWrapper {
+  margin-top: 15px;
+  display: inline-block;
+}
+
 
 #mapdiv {
   width: 100%;

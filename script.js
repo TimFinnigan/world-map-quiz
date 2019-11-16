@@ -49,6 +49,8 @@ $(document).ready(function() {
     }
   };
 
+  let guessedCount = 0;
+
   // Todo - update host for JSON file
   $.getJSON("https://api.myjson.com/bins/1du42e.json", function(result) {
     let codes = Object.keys(result);
@@ -70,6 +72,8 @@ $(document).ready(function() {
     });
 
     $("#selectCountry").change(function() {
+      guessedCount++;
+      
       let selected = $("#selectCountry option:selected").val();
       if (selected === country) {
         correctAnswers.push(country);
@@ -78,6 +82,8 @@ $(document).ready(function() {
       }
       $("#correctAnswers").text(correctAnswers.length);
       $("#wrongAnswers").text(wrongAnswers.length);
+
+      codes = codes.filter(e => e !== randomCountry);
 
       $("#count").text(codes.length);
     });
