@@ -33,12 +33,30 @@ $(document).ready(function() {
     ]
   });
 
+  let correctAnswers = [];
+  let wrongAnswers = [];
+
+  const populateDropdown = function(options) {
+    let select = document.getElementById("selectCountry");
+    for (let i = 0; i < options.length; i++) {
+      let opt = options[i];
+      let el = document.createElement("option");
+      el.textContent = opt;
+      el.value = opt;
+      select.appendChild(el);
+    }
+  };
+
   // Todo - update host for JSON file
   $.getJSON("https://api.myjson.com/bins/1du42e.json", function(result) {
     let codes = Object.keys(result);
-    let country = codes[Math.floor(Math.random() * codes.length)];
-    let mapObject = map.getObjectById(country);
+    let countries = Object.values(result);
+    populateDropdown(countries);
+    console.log(codes);
+    $("#count").text(codes.length);
+    let countryCode = codes[Math.floor(Math.random() * codes.length)];
+    let mapObject = map.getObjectById(countryCode);
     map.clickMapObject(mapObject);
-    $("#country").text(country);
+    $("#countryCode").text(countryCode);
   });
 });
