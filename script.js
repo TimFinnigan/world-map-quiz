@@ -39,5 +39,6 @@ $(document).ready(function() {
     let country = codes[Math.floor(Math.random() * codes.length)];
     let mapObject = map.getObjectById(country);
     map.clickMapObject(mapObject);
+    $("#country").text(country);
   });
 });
