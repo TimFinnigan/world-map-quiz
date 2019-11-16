@@ -37,7 +37,9 @@ $(document).ready(function() {
   let wrongAnswers = [];
 
   const populateDropdown = function(options) {
-    $("#selectCountry").prepend("<option value='' selected='selected'></option>");
+    $("#selectCountry").prepend(
+      "<option value='' selected='selected'></option>"
+    );
     for (let i = 0; i < options.length; i++) {
       let opt = options[i];
       let el = document.createElement("option");
@@ -52,11 +54,20 @@ $(document).ready(function() {
     let codes = Object.keys(result);
     let countries = Object.values(result);
     populateDropdown(countries);
-    console.log(codes);
+
     $("#count").text(codes.length);
-    let countryCode = codes[Math.floor(Math.random() * codes.length)];
-    let mapObject = map.getObjectById(countryCode);
+
+    let randomCountry = codes[Math.floor(Math.random() * codes.length)];
+    let mapObject = map.getObjectById(randomCountry);
     map.clickMapObject(mapObject);
-    $("#countryCode").text(countryCode);
+
+    let country = result[randomCountry];
+
+    // $("#randomCountry").text(result[randomCountry]);
+
+    $("#selectCountry").change(function() {
+      let selected = $("#selectCountry option:selected").val();
+      if (selected === country) alert("you got it!");
+    });
   });
 });
