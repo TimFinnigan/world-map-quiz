@@ -37,13 +37,13 @@ $(document).ready(function() {
   let wrongAnswers = [];
 
   const populateDropdown = function(options) {
-    let select = document.getElementById("selectCountry");
+    $("#selectCountry").prepend("<option value='' selected='selected'></option>");
     for (let i = 0; i < options.length; i++) {
       let opt = options[i];
       let el = document.createElement("option");
       el.textContent = opt;
       el.value = opt;
-      select.appendChild(el);
+      $("#selectCountry").append(el);
     }
   };
 
