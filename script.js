@@ -72,6 +72,8 @@ $(document).ready(function() {
       } else {
         wrongAnswers.push(country);
       }
+      $("#correctAnswers").text(correctAnswers.length);
+      $("#wrongAnswers").text(wrongAnswers.length);
     });
   });
 });

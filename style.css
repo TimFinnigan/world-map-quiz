@@ -18,7 +18,18 @@ body {
 }
 
 #count {
-  margin-top: 20px;
+  margin-top: 10px;
+}
+
+#correctWrapper {
+  color: green;
+  display: inline-block;
+}
+
+#wrongWrapper {
+  color: darkred;
+  display: inline-block;
+  margin-left: 50px;
 }
 
 #mapdiv {
