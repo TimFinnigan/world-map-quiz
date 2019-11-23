@@ -72,20 +72,33 @@ $(document).ready(function() {
     });
 
     $("#selectCountry").change(function() {
+      $("#nextButton").css("display", "inline");
+
       guessedCount++;
 
       let selected = $("#selectCountry option:selected").val();
+
       if (selected === country) {
         correctAnswers.push(country);
       } else {
         wrongAnswers.push(country);
       }
+
       $("#correctAnswers").text(correctAnswers.length);
       $("#wrongAnswers").text(wrongAnswers.length);
 
       codes = codes.filter(e => e !== randomCountry);
 
+      $("#countGuessed").text(guessedCount);
       $("#count").text(codes.length);
+    });
+
+    $("#nextButton").click(function() {
+      $("#nextButton").css("display", "none");
+
+      let randomCountry = codes[Math.floor(Math.random() * codes.length)];
+      let mapObject = map.getObjectById(randomCountry);
+      map.clickMapObject(mapObject);
     });
   });
 });
