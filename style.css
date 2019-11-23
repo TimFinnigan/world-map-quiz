@@ -5,8 +5,8 @@ body {
 #info {
   height: 145px;
   width: 350px;
-  border-radius: 1%;
-  border: 3px solid darkgrey;
+  border-radius: 10px;
+  border: 1px solid darkgrey;
   background: lightgrey;
   position: absolute;
   bottom: 0;

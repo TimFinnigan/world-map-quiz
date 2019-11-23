@@ -40,6 +40,7 @@ $(document).ready(function() {
     $("#selectCountry").prepend(
       "<option value='' selected='selected'></option>"
     );
+    
     for (let i = 0; i < options.length; i++) {
       let opt = options[i];
       let el = document.createElement("option");
@@ -87,14 +88,19 @@ $(document).ready(function() {
       $("#correctAnswers").text(correctAnswers.length);
       $("#wrongAnswers").text(wrongAnswers.length);
 
-      codes = codes.filter(e => e !== randomCountry);
 
       $("#countGuessed").text(guessedCount);
-      $("#count").text(codes.length);
+      $("#count").text(codes.length - guessedCount);
     });
 
     $("#nextButton").click(function() {
       $("#nextButton").css("display", "none");
+
+      $("#selectCountry").empty();
+
+      // codes = codes.filter(e => e !== randomCountry);
+
+      populateDropdown(countries);
 
       let randomCountry = codes[Math.floor(Math.random() * codes.length)];
       let mapObject = map.getObjectById(randomCountry);
