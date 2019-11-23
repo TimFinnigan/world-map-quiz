@@ -52,7 +52,7 @@ $(document).ready(function() {
   let guessedCount = 0;
 
   // Todo - update host for JSON file
-  $.getJSON("https://api.myjson.com/bins/1du42e.json", function(result) {
+  $.getJSON("https://api.myjson.com/bins/fdygq.json", function(result) {
     let codes = Object.keys(result);
     let countries = Object.values(result);
 
@@ -73,7 +73,7 @@ $(document).ready(function() {
 
     $("#selectCountry").change(function() {
       guessedCount++;
-      
+
       let selected = $("#selectCountry option:selected").val();
       if (selected === country) {
         correctAnswers.push(country);
