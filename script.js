@@ -56,10 +56,11 @@ $(document).ready(function() {
   $.getJSON("https://api.myjson.com/bins/fdygq.json", function(result) {
     let codes = Object.keys(result);
     let countries = Object.values(result);
+    let guesses = codes.length;
 
     populateDropdown(countries);
 
-    $("#count").text(codes.length);
+    $("#count").text(guesses);
 
     let randomCountry = codes[Math.floor(Math.random() * codes.length)];
     let mapObject = map.getObjectById(randomCountry);
@@ -73,6 +74,7 @@ $(document).ready(function() {
     });
 
     $("#selectCountry").change(function() {
+      $("#selectCountry").prop("disabled", true);
       $("#nextButton").css("display", "inline");
 
       guessedCount++;
@@ -89,10 +91,11 @@ $(document).ready(function() {
       $("#wrongAnswers").text(wrongAnswers.length);
 
       $("#countGuessed").text(guessedCount);
-      $("#count").text(codes.length - guessedCount);
+      $("#count").text(guesses - guessedCount);
     });
 
     $("#nextButton").click(function() {
+      $("#selectCountry").prop("disabled", false);
       $("#hint").hide();
       $("#nextButton").css("display", "none");
       $("#selectCountry").empty();
