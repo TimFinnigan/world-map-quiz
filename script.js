@@ -7,7 +7,8 @@ $(document).ready(function () {
     backgroundColor: "#535364",
     backgroundAlpha: 1,
     zoomControl: {
-      zoomControlEnabled: true
+      zoomControlEnabled: true,
+      homeButtonEnabled: false
     },
     dataProvider: {
       map: "worldHigh",
@@ -106,7 +107,7 @@ $(document).ready(function () {
 
     $("#next_button").click(function () {
       $("#response_container").css("display", "none");
-      $("#response_container").css("margin-bottom", "0px")
+      $("#response_container").css("margin-bottom", "0px");
       $("#skip_button").css("display", "inline");
       $("#hint_button").css("display", "inline");
       $("#hint").css("display", "inline");
@@ -154,6 +155,6 @@ $(document).ready(function () {
       country = result[randomCountry];
 
       $("#hint").text("Country code is: " + randomCountry);
-    })
+    });
   });
 });
