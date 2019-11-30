@@ -100,6 +100,7 @@ $(document).ready(function () {
     });
 
     $("#next_button").click(function () {
+      $("#skip_button").css("display", "inline");
       $("#hint_button").css("display", "inline");
       $("#hint").css("display", "inline");
       $("#response_text").text("");
@@ -123,5 +124,28 @@ $(document).ready(function () {
 
       $("#hint").text("Country code is: " + randomCountry);
     });
+
+    $("#skip_button").click(function () {
+      $("#hint_button").css("display", "inline");
+      $("#hint").css("display", "inline");
+      $("#response_text").text("");
+      $("#select_country").prop("disabled", false);
+      $("#hint").hide();
+      $("#next_button").css("display", "none");
+      $("#select_country").empty();
+
+      codes = Object.keys(result);
+      countries = Object.values(result);
+
+      populateDropdown(countries);
+
+      randomCountry = codes[Math.floor(Math.random() * codes.length)];
+      mapObject = map.getObjectById(randomCountry);
+      map.clickMapObject(mapObject);
+
+      country = result[randomCountry];
+
+      $("#hint").text("Country code is: " + randomCountry);
+    })
   });
 });
