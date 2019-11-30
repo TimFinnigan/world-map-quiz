@@ -23,6 +23,9 @@ $(document).ready(function () {
       rollOverColor: "#9EC2F7",
       rollOverOutlineColor: "#000000"
     },
+    balloon: {
+      enabled: false
+    },
     listeners: [
       {
         event: "clickMapObject",
