@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var map = AmCharts.makeChart("mapdiv", {
+  var map = AmCharts.makeChart("map_container", {
     type: "map",
     theme: "dark",
     projection: "mercator",
@@ -33,11 +33,11 @@ $(document).ready(function () {
     ]
   });
 
-  let correctAnswers = [];
-  let wrongAnswers = [];
+  let correct_answers = [];
+  let wrong_answers = [];
 
   const populateDropdown = function (options) {
-    $("#selectCountry").prepend(
+    $("#select_country").prepend(
       "<option value='' selected='selected'></option>"
     );
 
@@ -46,7 +46,7 @@ $(document).ready(function () {
       let el = document.createElement("option");
       el.textContent = opt;
       el.value = opt;
-      $("#selectCountry").append(el);
+      $("#select_country").append(el);
     }
   };
 
@@ -69,37 +69,37 @@ $(document).ready(function () {
     let country = result[randomCountry];
     $("#hint").text("Country code is: " + randomCountry);
 
-    $("#hintButton").click(function () {
+    $("#hint_button").click(function () {
       $("#hint").show();
     });
 
-    $("#selectCountry").change(function () {
-      $("#selectCountry").prop("disabled", true);
-      $("#nextButton").css("display", "inline");
-      $("#skipButton").css("display", "none");
+    $("#select_country").change(function () {
+      $("#select_country").prop("disabled", true);
+      $("#next_button").css("display", "inline");
+      $("#skip_button").css("display", "none");
 
       guessedCount++;
 
-      let selected = $("#selectCountry option:selected").val();
+      let selected = $("#select_country option:selected").val();
 
       if (selected === country) {
-        correctAnswers.push(country);
+        correct_answers.push(country);
       } else {
-        wrongAnswers.push(country);
+        wrong_answers.push(country);
       }
 
-      $("#correctAnswers").text(correctAnswers.length);
-      $("#wrongAnswers").text(wrongAnswers.length);
+      $("#correct_answers").text(correct_answers.length);
+      $("#wrong_answers").text(wrong_answers.length);
 
-      $("#countGuessed").text(guessedCount);
+      $("#count_guessed").text(guessedCount);
       $("#count").text(guesses - guessedCount);
     });
 
-    $("#nextButton").click(function () {
-      $("#selectCountry").prop("disabled", false);
+    $("#next_button").click(function () {
+      $("#select_country").prop("disabled", false);
       $("#hint").hide();
-      $("#nextButton").css("display", "none");
-      $("#selectCountry").empty();
+      $("#next_button").css("display", "none");
+      $("#select_country").empty();
 
       delete result[randomCountry];
 

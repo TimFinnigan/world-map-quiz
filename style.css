@@ -18,13 +18,13 @@ body {
   font-family: Verdana, Geneva, sans-serif;
 }
 
-#selectCountry {
+#select_country {
   width: 200px;
 }
 
-#hintButton,
-#nextButton,
-#skipButton {
+#hint_button,
+#next_button,
+#skip_button {
   font-size: 16px;
   margin-top: 5px;
   display: inline-block;
@@ -34,24 +34,24 @@ body {
   display: none;
 }
 
-#correctWrapper {
+#correct_wrapper {
   color: green;
   display: inline-block;
 }
 
-#wrongWrapper {
+#wrong_wrapper {
   color: darkred;
   display: inline-block;
   margin-left: 25px;
 }
 
-#countWrapper {
+#count_wrapper {
   margin-top: 15px;
   display: inline-block;
 }
 
 
-#mapdiv {
+#map_container {
   width: 100%;
   height: 100%;
 }
