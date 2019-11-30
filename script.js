@@ -77,6 +77,8 @@ $(document).ready(function () {
       $("#select_country").prop("disabled", true);
       $("#next_button").css("display", "inline");
       $("#skip_button").css("display", "none");
+      $("#hint_button").css("display", "none");
+      $("#hint").css("display", "none");
 
       guessedCount++;
 
@@ -84,8 +86,10 @@ $(document).ready(function () {
 
       if (selected === country) {
         correct_answers.push(country);
+        $("#response_text").text("Congrats, you got it!");
       } else {
         wrong_answers.push(country);
+        $("#response_text").text("Sorry, the answer is " + country + "!");
       }
 
       $("#correct_answers").text(correct_answers.length);
@@ -96,6 +100,9 @@ $(document).ready(function () {
     });
 
     $("#next_button").click(function () {
+      $("#hint_button").css("display", "inline");
+      $("#hint").css("display", "inline");
+      $("#response_text").text("");
       $("#select_country").prop("disabled", false);
       $("#hint").hide();
       $("#next_button").css("display", "none");
