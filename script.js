@@ -76,6 +76,7 @@ $(document).ready(function () {
     $("#selectCountry").change(function () {
       $("#selectCountry").prop("disabled", true);
       $("#nextButton").css("display", "inline");
+      $("#skipButton").css("display", "none");
 
       guessedCount++;
 

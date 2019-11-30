@@ -23,7 +23,8 @@ body {
 }
 
 #hintButton,
-#nextButton {
+#nextButton,
+#skipButton {
   font-size: 16px;
   margin-top: 5px;
   display: inline-block;
