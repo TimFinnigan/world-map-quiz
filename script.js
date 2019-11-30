@@ -74,6 +74,8 @@ $(document).ready(function () {
     });
 
     $("#select_country").change(function () {
+      $("#response_container").css("display", "block");
+      $("#response_container").css("margin", "11px 0");
       $("#select_country").prop("disabled", true);
       $("#next_button").css("display", "inline");
       $("#skip_button").css("display", "none");
@@ -100,6 +102,8 @@ $(document).ready(function () {
     });
 
     $("#next_button").click(function () {
+      $("#response_container").css("display", "none");
+      $("#response_container").css("margin-bottom", "0px")
       $("#skip_button").css("display", "inline");
       $("#hint_button").css("display", "inline");
       $("#hint").css("display", "inline");
@@ -126,6 +130,7 @@ $(document).ready(function () {
     });
 
     $("#skip_button").click(function () {
+      $("#response_container").css("display", "none");
       $("#hint_button").css("display", "inline");
       $("#hint").css("display", "inline");
       $("#response_text").text("");

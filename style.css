@@ -67,3 +67,7 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+#response_container { 
+  display: none;
+}
