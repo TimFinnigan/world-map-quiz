@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var map = AmCharts.makeChart("mapdiv", {
     type: "map",
     theme: "dark",
@@ -26,7 +26,7 @@ $(document).ready(function() {
     listeners: [
       {
         event: "clickMapObject",
-        method: function(event) {
+        method: function (event) {
           console.log(event.mapObject.id);
         }
       }
@@ -36,7 +36,7 @@ $(document).ready(function() {
   let correctAnswers = [];
   let wrongAnswers = [];
 
-  const populateDropdown = function(options) {
+  const populateDropdown = function (options) {
     $("#selectCountry").prepend(
       "<option value='' selected='selected'></option>"
     );
@@ -53,7 +53,7 @@ $(document).ready(function() {
   let guessedCount = 0;
 
   // Todo - update host for JSON file
-  $.getJSON("https://api.myjson.com/bins/fdygq.json", function(result) {
+  $.getJSON("https://api.myjson.com/bins/fdygq.json", function (result) {
     let codes = Object.keys(result);
     let countries = Object.values(result);
     let guesses = codes.length;
@@ -69,11 +69,11 @@ $(document).ready(function() {
     let country = result[randomCountry];
     $("#hint").text("Country code is: " + randomCountry);
 
-    $("#hintButton").click(function() {
+    $("#hintButton").click(function () {
       $("#hint").show();
     });
 
-    $("#selectCountry").change(function() {
+    $("#selectCountry").change(function () {
       $("#selectCountry").prop("disabled", true);
       $("#nextButton").css("display", "inline");
 
@@ -94,7 +94,7 @@ $(document).ready(function() {
       $("#count").text(guesses - guessedCount);
     });
 
-    $("#nextButton").click(function() {
+    $("#nextButton").click(function () {
       $("#selectCountry").prop("disabled", false);
       $("#hint").hide();
       $("#nextButton").css("display", "none");
