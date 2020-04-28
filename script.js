@@ -56,8 +56,7 @@ $(document).ready(function () {
 
   let guessedCount = 0;
 
-  // Todo - update host for JSON file
-  $.getJSON("https://api.myjson.com/bins/fdygq.json", function (result) {
+  $.getJSON("https://worldmapquiz.com/country-codes.json", function (result) {
     let codes = Object.keys(result);
     let countries = Object.values(result);
     let guesses = codes.length;
