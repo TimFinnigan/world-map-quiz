@@ -28,7 +28,6 @@ $(document).ready(function () {
       zoomControlEnabled: true,
       homeButtonEnabled: false
     },
-    smallMap: {},
     dataProvider: {
       map: "worldHigh",
       getAreasFromMap: true,
