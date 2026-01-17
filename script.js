@@ -1,4 +1,22 @@
 $(document).ready(function () {
+  let gameStarted = false;
+  let mapReady = false;
+
+  $("#start_button").click(function () {
+    $("#start_screen").fadeOut(400, function () {
+      $(this).remove();
+    });
+    $("#info").fadeIn(400);
+    gameStarted = true;
+    
+    // Wait for map to be ready before starting
+    if (mapReady) {
+      startGame();
+    } else {
+      setTimeout(startGame, 1000);
+    }
+  });
+
   var map = AmCharts.makeChart("map_container", {
     type: "map",
     theme: "dark",
@@ -10,6 +28,7 @@ $(document).ready(function () {
       zoomControlEnabled: true,
       homeButtonEnabled: false
     },
+    smallMap: {},
     dataProvider: {
       map: "worldHigh",
       getAreasFromMap: true,
@@ -17,6 +36,7 @@ $(document).ready(function () {
     },
     areasSettings: {
       autoZoom: true,
+      autoZoomReal: false,
       color: "#B4B4B7",
       colorSolid: "#84ADE9",
       selectedColor: "#84ADE9",
@@ -24,10 +44,18 @@ $(document).ready(function () {
       rollOverColor: "#9EC2F7",
       rollOverOutlineColor: "#000000"
     },
+    zoomDuration: 1,
     balloon: {
       enabled: false
     },
     listeners: [
+      {
+        event: "init",
+        method: function (event) {
+          mapReady = true;
+          console.log("Map initialized");
+        }
+      },
       {
         event: "clickMapObject",
         method: function (event) {
@@ -42,7 +70,7 @@ $(document).ready(function () {
 
   const populateDropdown = function (options) {
     $("#select_country").prepend(
-      "<option value='' selected='selected'></option>"
+      "<option value='' selected='selected' disabled>Select a country</option>"
     );
 
     for (let i = 0; i < options.length; i++) {
@@ -56,7 +84,8 @@ $(document).ready(function () {
 
   let guessedCount = 0;
 
-  $.getJSON("https://worldmapquiz.com/country-codes.json", function (result) {
+  function startGame() {
+    $.getJSON("country-codes.json", function (result) {
     let codes = Object.keys(result);
     let countries = Object.values(result);
     let guesses = codes.length;
@@ -67,7 +96,10 @@ $(document).ready(function () {
 
     let randomCountry = codes[Math.floor(Math.random() * codes.length)];
     let mapObject = map.getObjectById(randomCountry);
-    map.clickMapObject(mapObject);
+    
+    if (mapObject) {
+      map.clickMapObject(mapObject);
+    }
 
     let country = result[randomCountry];
     $("#hint").text("Country code is: " + randomCountry);
@@ -149,11 +181,15 @@ $(document).ready(function () {
 
       randomCountry = codes[Math.floor(Math.random() * codes.length)];
       mapObject = map.getObjectById(randomCountry);
-      map.clickMapObject(mapObject);
+      
+      if (mapObject) {
+        map.clickMapObject(mapObject);
+      }
 
       country = result[randomCountry];
 
       $("#hint").text("Country code is: " + randomCountry);
     });
-  });
+    });
+  }
 });
